@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Químicos</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: azure;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+
+        .menu {
+            background-color: white;
+            width: 100%;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #1E5A9C;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-family: 'Gill Sans',
+                         'Gill Sans MT',
+                         Calibri,
+                         'Trebuchet MS',
+                         sans-serif;
+
+            padding: 8px 15px;
+        }
+
+        nav a:hover {
+            background-color: #E0F6FD;
+            border-radius: 20px;
+        }
+
+
+        .portada {
+            position: relative;
+            width: 100%;
+        }
+
+        .portada > img {
+            width: 100%;
+            display: block;
+        }
+
+        .texto-portada {
+            position: absolute;
+            top: 12%;
+            left: 7%;
+            color: white;
+            font-family: Georgia,
+                         'Times New Roman',
+                         Times,
+                         serif;
+            width: 55%;
+        }
+
+        .texto-portada h1 {
+            font-size: clamp(25px, 3vw, 45px);
+            margin: 0;
+        }
+
+        .descripcion {
+            font-size: clamp(15px, 1.5vw, 22px);
+            max-width: 600px;
+            margin-top: 40px;
+            line-height: 1.5;
+        }
+/
+        .logo-portada {
+            position: absolute;
+            right: 6%;
+            top: 22%;
+            width: 250px;
+            max-width: 25%;
+            height: auto;
+        }
+
+
+
+        hr {
+            width: 50%;
+            border: none;
+            border-top: 1px solid #1E5A9C;
+            margin: 40px auto;
+        }
+
+
+
+        .objetivo {
+            background-color: #E0F6FD;
+            width: 90%;
+            max-width: 1400px;
+            margin: auto;
+            border-radius: 40px;
+            padding: 50px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .objetivo-contenido {
+            padding-left: 30px;
+        }
+
+        .objetivo-titulo {
+            background-color: #E0F6FD;
+            border-radius: 50px;
+            border: none;
+            border-left: 7px solid #7FC4F2;
+            font-size: clamp(32px, 4vw, 49px);
+            padding: 15px 25px 15px 45px;
+            font-family: 'Franklin Gothic Medium',
+                         'Arial Narrow',
+                         Arial,
+                         sans-serif;
+            color: #1E5A9C;
+        }
+
+        .objetivo-texto {
+            background-color: #E0F6FD;
+            font-size: 20px;
+            width: 100%;
+            max-width: 550px;
+            border-radius: 40px;
+            font-family: 'Lucida Sans',
+                         'Lucida Sans Regular',
+                         'Lucida Grande',
+                         'Lucida Sans Unicode',
+                         Geneva,
+                         Verdana,
+                         sans-serif;
+
+            padding: 25px 35px;
+            border-left: 4px solid #7FC4F2;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .objetivo-imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .objetivo-imagen img {
+            width: 55%;
+            max-width: 550px;
+            height: auto;
+        }
+
+
+
+        .mision-vision {
+            background-color: #E0F6FD;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            border-radius: 40px;
+            padding: 50px;
+        }
+
+        .titulos-myv {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 25px;
+        }
+
+        .titulo-mision,
+        .titulo-vision {
+            background-color: #E0F6FD;
+            border-radius: 20px;
+            font-size: 35px;
+            padding: 20px;
+            font-family: 'Franklin Gothic Medium',
+                         'Arial Narrow',
+                         Arial,
+                         sans-serif;
+            color: #1E5A9C;
+            text-align: center;
+        }
+
+        .titulo-mision {
+            border-left: 4px solid #7FC4F2;
+        }
+
+        .titulo-vision {
+            border-right: 4px solid #7FC4F2;
+        }
+
+        .textos-myv {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+
+   
+            align-items: stretch;
+        }
+
+        .texto-mision,
+        .texto-vision {
+            background-color: #E0F6FD;
+            color: black;
+            border-radius: 20px;
+            padding: 30px;
+            font-size: 20px;
+            font-family: 'Lucida Sans',
+                         'Lucida Sans Regular',
+                         'Lucida Grande',
+                         'Lucida Sans Unicode',
+                         Geneva,
+                         Verdana,
+                         sans-serif;
+
+            text-align: justify;
+            line-height: 1.6;
+            margin: 0;
+
+            /* Misma altura */
+            min-height: 190px;
+            height: 100%;
+        }
+
+        .texto-mision {
+            border-left: 3px solid #7FC4F2;
+        }
+
+        .texto-vision {
+            border-right: 3px solid #7FC4F2;
+        }
+
+
+
+
+        .productos {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        table {
+            width: 90%;
+            max-width: 1300px;
+            border: none;
+            border-radius: 12px;
+            border-collapse: separate;
+            overflow: hidden;
+            text-align: center;
+            margin: auto;
+            border-spacing: 5px;
+            background-color: aliceblue;
+        }
+
+        caption {
+            font-size: 35px;
+            color: #1E5A9C;
+            font-family: 'Courier New',
+                         Courier,
+                         monospace;
+            margin: 25px;
+        }
+
+        th {
+            padding: 12px;
+            border: 1px solid #1E5A9C;
+            border-radius: 10px;
+            background-color: #7FC4F2;
+            color: black;
+            font-size: 20px;
+            font-family: 'Times New Roman',
+                         Times,
+                         serif;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #1E5A9C;
+            border-radius: 10px;
+            font-size: 20px;
+            color: black;
+            font-family: 'Gill Sans',
+                         'Gill Sans MT',
+                         Calibri,
+                         'Trebuchet MS',
+                         sans-serif;
+        }
+
+        td img {
+            width: 200px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+
+
+
+        @media (max-width: 1000px) {
+
+            .objetivo {
+                width: 92%;
+            }
+
+            .mision-vision {
+                width: 92%;
+            }
+
+            .logo-portada {
+                width: 200px;
+            }
+
+            .texto-portada {
+                top: 10%;
+            }
+
+            .descripcion {
+                margin-top: 25px;
+            }
+        }
+
+
+   
+
+        @media (max-width: 700px) {
+
+            .menu {
+                height: auto;
+                min-height: 70px;
+                padding: 10px;
+            }
+
+            nav {
+                gap: 5px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin: 0;
+            }
+
+            .texto-portada {
+                top: 8%;
+                left: 5%;
+                width: 55%;
+            }
+
+            .texto-portada h1 {
+                font-size: 20px;
+            }
+
+            .descripcion {
+                font-size: 11px;
+                margin-top: 15px;
+            }
+
+            .logo-portada {
+                width: 120px;
+                max-width: 25%;
+                right: 5%;
+                top: 25%;
+            }
+
+
+
+
+            .objetivo {
+                grid-template-columns: 1fr;
+                width: 94%;
+                padding: 30px 20px;
+            }
+
+            .objetivo-contenido {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .objetivo-texto {
+                margin: auto;
+                font-size: 17px;
+            }
+
+            .objetivo-imagen img {
+                width: 60%;
+            }
+
+
+
+
+            .mision-vision {
+                width: 94%;
+                padding: 30px 20px;
+            }
+
+            .titulos-myv {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .textos-myv {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .texto-mision,
+            .texto-vision {
+                min-height: auto;
+            }
+
+
+
+
+            table {
+                width: 98%;
+            }
+
+            th,
+            td {
+                font-size: 14px;
+                padding: 6px;
+            }
+
+            td img {
+                width: 120px;
+            }
+
+            caption {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+
+    <div class="menu">
+
+        <nav>
+
+            <a href="#obj">
+                Objetivo
+            </a>
+
+            <a href="#myv">
+                Misión y visión
+            </a>
+
+            <a href="#productos">
+                Productos
+            </a>
+
+        </nav>
+
+    </div>
+
+
+    <div class="portada">
+
+        <img src="1.jpeg">
+
+        <div class="texto-portada">
+
+            <h1>
+                QUÍMICOS 2A S.A
+            </h1>
+
+            <div class="descripcion">
+
+                <p>
+                    Nuestro compromiso es proporcionar productos confiables y un servicio eficiente,
+                    ayudando a nuestros clientes a mantener ambientes limpios, higiénicos y agradables.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <img src="5.png"
+             class="logo-portada">
+
+    </div>
+
+
+    <hr>
+
+
+
+    <div id="obj"
+         class="objetivo">
+
+        <div class="objetivo-contenido">
+
+            <button class="objetivo-titulo">
+                Objetivo
+            </button>
+
+            <p class="objetivo-texto">
+
+                Ofrecer productos químicos de calidad y soluciones confiables para satisfacer
+                las necesidades de nuestros clientes, brindando un servicio responsable,
+                seguro y eficiente.
+
+            </p>
+
+        </div>
+
+
+        <div class="objetivo-imagen">
+
+            <img src="6.jpeg">
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+    <div id="myv"
+         class="mision-vision">
+
+
+        <div class="titulos-myv">
+
+            <div class="titulo-mision">
+                Misión
+            </div>
+
+            <div class="titulo-vision">
+                Visión
+            </div>
+
+        </div>
+
+
+        <div class="textos-myv">
+
+            <p class="texto-mision">
+
+                Proporcionar productos químicos de calidad, garantizando una atención responsable
+                y profesional, con compromiso hacia la seguridad, la satisfacción de nuestros
+                clientes y el cuidado del medio ambiente.
+
+            </p>
+
+
+            <p class="texto-vision">
+
+                Ser una empresa reconocida por la calidad de sus productos químicos,
+                la confianza de sus clientes y la excelencia de su servicio,
+                creciendo de manera responsable y sostenible.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <hr>
+
+
+
+
+    <div id="productos"
+         class="productos">
+
+        <table>
+
+            <caption>
+                Productos de limpieza
+            </caption>
+
+
+            <tr>
+
+                <th>
+                    Vista del producto
+                </th>
+
+                <th>
+                    Nombre del producto
+                </th>
+
+                <th>
+                    Precio
+                </th>
+
+                <th>
+                    Cantidad
+                </th>
+
+                <th>
+                    Contenido
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    <img src="2.jpeg">
+
+                </td>
+
+                <td>
+                    Cloro
+                </td>
+
+                <td>
+                    $0,99
+                </td>
+
+                <td>
+                    Botella mediana
+                </td>
+
+                <td>
+                    1000 ml
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    <img src="3.jpeg">
+
+                </td>
+
+                <td>
+                    Desinfectante
+                </td>
+
+                <td>
+                    $2,99
+                </td>
+
+                <td>
+                    Botella intermedia
+                </td>
+
+                <td>
+                    1800 ml
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    <img src="jabonL.jpg">
+
+                </td>
+
+                <td>
+                    Jabón líquido para manos
+                </td>
+
+                <td>
+                    $1,58
+                </td>
+
+                <td>
+                    Botella mediana
+                </td>
+
+                <td>
+                    250 ml
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>
